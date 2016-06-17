@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ApplicationName">Proximity Notifier</string>
+    <string name="button_scan">Scan devices</string>
+    <string name="title_devices">Dispositivi trovati</string>
+    <string name="title_main">Proximity Notifier - Select device</string>
+    <string name="none_found">No device found</string>
+</resources>
