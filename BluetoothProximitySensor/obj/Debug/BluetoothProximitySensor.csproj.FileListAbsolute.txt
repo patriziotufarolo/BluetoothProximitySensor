@@ -36,5 +36,7 @@ c:\users\patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor
 c:\users\patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\android\assets\System.Xml.dll.mdb
 c:\users\patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
 c:\users\patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\BluetoothProximitySensor.csprojResolveAssemblyReference.cache
-c:\users\patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\BluetoothProximitySensor.dll.mdb
-c:\users\patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\bin\Debug\BluetoothProximitySensor.dll.mdb
+C:\Users\Patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\res\layout\bluetoothdevicechoose.xml
+C:\Users\Patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\res\drawable\icon_big.png
+C:\Users\Patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\obj\Debug\BluetoothProximitySensor.dll.mdb
+C:\Users\Patrizio\documents\visual studio 2015\Projects\BluetoothProximitySensor\BluetoothProximitySensor\bin\Debug\BluetoothProximitySensor.dll.mdb

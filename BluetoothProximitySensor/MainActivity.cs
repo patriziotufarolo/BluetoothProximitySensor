@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
@@ -9,6 +10,8 @@ using Android.Widget;
 using Android.OS;
 using Android.Bluetooth;
 using Android.Util;
+using System.Linq;
+using Android.Preferences;
 
 namespace BluetoothProximitySensor
 {
@@ -16,13 +19,14 @@ namespace BluetoothProximitySensor
     public class BluetoothDeviceAdapter : BaseAdapter<BluetoothDevice>
     {
         Activity context;
-        bool NoDevices = false;
-        public List<BluetoothDevice> devices = new List<BluetoothDevice>();
+        public List<BluetoothDevice> devices;
+
         private int mResource;
         public BluetoothDeviceAdapter(Activity act, int resource): base()
         {
             context = act;
             mResource = resource;
+            this.devices = new List<BluetoothDevice>();
         }
 
         public override int Count
@@ -32,10 +36,7 @@ namespace BluetoothProximitySensor
 
         public override BluetoothDevice this[int position]
         {
-            get
-            {
-                return devices[position];
-            }
+            get { return devices[position]; }
         }
 
         public override Java.Lang.Object GetItem(int position)
@@ -52,12 +53,7 @@ namespace BluetoothProximitySensor
             devices.Add(device);
             NotifyDataSetChanged();
         }
-
-        public void setNoDevices()
-        {
-            NoDevices = true;
-        }
-
+        
         public override void NotifyDataSetChanged()
         {
             base.NotifyDataSetChanged();
@@ -83,7 +79,7 @@ namespace BluetoothProximitySensor
   
 
             var device = devices[position];
-            text.Text = device.Name + "\n" +device.Address + ((device.BondState == Bond.Bonded) ? "\nAlready paired" : "");
+            text.Text = device.Name + "\n" +device.Address;
             return view;
         }
     }
@@ -93,9 +89,11 @@ namespace BluetoothProximitySensor
     {
         private BluetoothAdapter btAdapter;
         public BluetoothDeviceAdapter devicesAdapter;
-        private ArrayAdapter<String> mNewDevicesArrayAdapter;
-        private Receiver receiver;
+        public BluetoothDeviceAdapter pairedDevicesAdapter;
+        
         private IntentFilter filter = new IntentFilter();
+
+        ISharedPreferences prefs;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -103,101 +101,28 @@ namespace BluetoothProximitySensor
             //RequestWindowFeature(WindowFeatures.IndeterminateProgress);
 
             SetContentView(Resource.Layout.Main);
-            btAdapter = BluetoothAdapter.DefaultAdapter;
-            devicesAdapter = new BluetoothDeviceAdapter(this, Resource.Layout.DevicesListItem);
 
-            mNewDevicesArrayAdapter = new ArrayAdapter<String>(this, Resource.Layout.DevicesListItem);
-            
 
-            var buttonScan = FindViewById<Button>(Resource.Id.button_scan);
-            buttonScan.Click += (sender, e) =>
-            {
-                DoDiscovery();
+            var bluetoothChooseDeviceButton = FindViewById<Button>(Resource.Id.button_bluetooth_choose_device);
+            bluetoothChooseDeviceButton.Click += (sender, e) => {
+                Intent chooseBluetoothDevice = new Intent(this, typeof(BluetoothDeviceChooseActivity));
+                StartActivity(chooseBluetoothDevice);
             };
-            
-            var devicesListView = FindViewById<ListView>(Resource.Id.devices);
-            devicesListView.Adapter = devicesAdapter;
-            devicesListView.ItemClick += DeviceListClick;
 
-            receiver = new Receiver(this);
-           
-            filter.AddAction(BluetoothDevice.ActionFound);
-            filter.AddAction(BluetoothAdapter.ActionDiscoveryFinished);
-            RegisterReceiver(receiver, filter);
-        }
+            var openSettingsButton = FindViewById<Button>(Resource.Id.button_open_settings);
 
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-
-            if (btAdapter != null)
+            var startServiceButton = FindViewById<Button>(Resource.Id.button_start);
+            startServiceButton.Click += delegate {
+                StartService(new Intent(this, typeof(ProximityService)));
+            };
+            var stopServiceButton = FindViewById<Button>(Resource.Id.button_stop);
+            stopServiceButton.Click += delegate
             {
-                btAdapter.CancelDiscovery();
-            }
-            UnregisterReceiver(receiver);
+                StopService(new Intent(this, typeof(ProximityService)));
+            };
+
         }
 
-        protected override void OnResume()
-        {
-            base.OnResume();
-            RegisterReceiver(receiver, filter);
-        }
-
-        protected override void OnPause()
-        {
-            base.OnPause();
-            UnregisterReceiver(receiver);
-        }
-
-        private void DoDiscovery()
-        {
-            FindViewById<View>(Resource.Id.title_devices).Visibility = ViewStates.Visible;
-            if (btAdapter.IsDiscovering)
-            {
-                btAdapter.CancelDiscovery();
-            }
-            btAdapter.StartDiscovery();
-        }
-
-        private void DeviceListClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            btAdapter.CancelDiscovery();
-            var info = (e.View as TextView).Text.ToString();
-        }
-
-        public class Receiver : BroadcastReceiver
-        {
-            MainActivity _activity;
-            public Receiver(MainActivity act)
-            {
-                _activity = act;
-            }
-            public override void OnReceive(Context context, Intent intent)
-            {
-                string action = intent.Action;
-                switch (action)
-                {
-                    case (BluetoothDevice.ActionFound):
-                        BluetoothDevice device = (BluetoothDevice)intent.GetParcelableExtra(BluetoothDevice.ExtraDevice);
-                        _activity.devicesAdapter.devices.Add(device);
-                        _activity.devicesAdapter.NotifyDataSetChanged();
-                        Toast foundDeviceToast = Toast.MakeText(_activity, "Device found\n " + device.Name + "\n" + device.Address , ToastLength.Short);
-                        foundDeviceToast.Show();
-                        _activity.mNewDevicesArrayAdapter.Add(device.Name + "\n" + device.Address);
-                        break;
-                    case (BluetoothAdapter.ActionDiscoveryFinished):
-                        if (_activity.devicesAdapter.Count == 0)
-                        {
-                            _activity.devicesAdapter.setNoDevices();
-                            Toast noDeviceToast = Toast.MakeText(_activity, "No device found", ToastLength.Short);
-                            var noDevices = "No devices";
-                            _activity.mNewDevicesArrayAdapter.Add(noDevices);
-                            noDeviceToast.Show();
-                        }
-                        break;
-                }
-            }
-        }
     }
 }
 

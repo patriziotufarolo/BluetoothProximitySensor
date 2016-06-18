@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ApplicationName">Proximity Notifier</string>
+    <string name="ApplicationName">Smart Bell</string>
     <string name="button_scan">Scan devices</string>
-    <string name="title_devices">Dispositivi trovati</string>
-    <string name="title_main">Proximity Notifier - Select device</string>
+    
+    <string name="title_devices">Found devices - Click to pair</string>
+    <string name="title_main">Smart Bell</string>
+    <string name="device_found">Found a device</string>
     <string name="none_found">No device found</string>
+    <string name="title_paired_devices">Paired devices</string>
+    <string name="title_no_paired_devices">No paired devices</string>
+    <string name="successfully_paired">Device paired successfully!</string>
+    <string name="button_start">Start service</string>
+    <string name="button_stop">Stop service</string>
+    <string name="connection_lost">Connection to device lost</string>
+    <string name="unable_to_connect">Unable to connect to device</string>
+    <string name="motion_detected">Dlin dlon!</string>
+    <string name="device_choose_confirm">Do you want to use this device?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="button_choose_device">Choose Bluetooth device</string>
+    <string name="button_open_settings">Open Settings</string>
 </resources>
