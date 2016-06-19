@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-            android:src="@drawable/icon_big"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView" />
+        android:src="@drawable/icon_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:padding="3dp"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -19,12 +20,6 @@
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:text="@string/button_choose_device" />
-        <Button
-            android:id="@+id/button_open_settings"
-            android:layout_width="fill_parent"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:text="@string/button_open_settings" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

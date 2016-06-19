@@ -66,17 +66,14 @@ namespace BluetoothProximitySensor
 			// aapt resource value: 0x7f050006
 			public const int button_bluetooth_choose_device = 2131034118;
 			
-			// aapt resource value: 0x7f050007
-			public const int button_open_settings = 2131034119;
-			
 			// aapt resource value: 0x7f050002
 			public const int button_scan = 2131034114;
 			
-			// aapt resource value: 0x7f050008
-			public const int button_start = 2131034120;
+			// aapt resource value: 0x7f050007
+			public const int button_start = 2131034119;
 			
-			// aapt resource value: 0x7f050009
-			public const int button_stop = 2131034121;
+			// aapt resource value: 0x7f050008
+			public const int button_stop = 2131034120;
 			
 			// aapt resource value: 0x7f050004
 			public const int devices = 2131034116;
@@ -133,9 +130,6 @@ namespace BluetoothProximitySensor
 			
 			// aapt resource value: 0x7f040011
 			public const int button_choose_device = 2130968593;
-			
-			// aapt resource value: 0x7f040012
-			public const int button_open_settings = 2130968594;
 			
 			// aapt resource value: 0x7f040001
 			public const int button_scan = 2130968577;

@@ -19,5 +19,4 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="button_choose_device">Choose Bluetooth device</string>
-    <string name="button_open_settings">Open Settings</string>
 </resources>

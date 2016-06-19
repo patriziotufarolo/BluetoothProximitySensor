@@ -16,10 +16,9 @@ public final class R {
     }
     public static final class id {
         public static final int button_bluetooth_choose_device=0x7f050006;
-        public static final int button_open_settings=0x7f050007;
         public static final int button_scan=0x7f050002;
-        public static final int button_start=0x7f050008;
-        public static final int button_stop=0x7f050009;
+        public static final int button_start=0x7f050007;
+        public static final int button_stop=0x7f050008;
         public static final int devices=0x7f050004;
         public static final int imageView=0x7f050005;
         public static final int paired_devices=0x7f050001;
@@ -34,7 +33,6 @@ public final class R {
     public static final class string {
         public static final int ApplicationName=0x7f040000;
         public static final int button_choose_device=0x7f040011;
-        public static final int button_open_settings=0x7f040012;
         public static final int button_scan=0x7f040001;
         public static final int button_start=0x7f040009;
         public static final int button_stop=0x7f04000a;

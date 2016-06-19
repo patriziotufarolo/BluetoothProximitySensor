@@ -109,8 +109,6 @@ namespace BluetoothProximitySensor
                 StartActivity(chooseBluetoothDevice);
             };
 
-            var openSettingsButton = FindViewById<Button>(Resource.Id.button_open_settings);
-
             var startServiceButton = FindViewById<Button>(Resource.Id.button_start);
             startServiceButton.Click += delegate {
                 StartService(new Intent(this, typeof(ProximityService)));
