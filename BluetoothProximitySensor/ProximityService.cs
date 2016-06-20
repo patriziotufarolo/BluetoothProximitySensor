@@ -144,13 +144,13 @@ namespace BluetoothProximitySensor
         private void connectionFailed()
         {
             stop();
-            Toast.MakeText(this, "Unable to connect to device", ToastLength.Short).Show();
+            Toast.MakeText(this, Resource.String.unable_to_connect, ToastLength.Short).Show();
         }
 
         private void connectionLost()
         {
             stop();
-            Toast.MakeText(this, "Connection to device lost", ToastLength.Short).Show();
+            Toast.MakeText(this, Resource.String.connection_lost, ToastLength.Short).Show();
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

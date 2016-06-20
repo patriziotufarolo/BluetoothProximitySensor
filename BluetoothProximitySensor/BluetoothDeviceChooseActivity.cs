@@ -13,7 +13,7 @@ using Android.Bluetooth;
 
 namespace BluetoothProximitySensor
 {
-    [Activity(Label = "Choose a device")]
+    [Activity(Label = "@string/choose_device")]
     public class BluetoothDeviceChooseActivity : Activity
     {
 
@@ -33,23 +33,45 @@ namespace BluetoothProximitySensor
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.BluetoothDeviceChoose);
 
-            prefs = GetSharedPreferences("BluetoothProximitySensor", FileCreationMode.Private);
 
             btAdapter = BluetoothAdapter.DefaultAdapter;
-            devicesAdapter = new BluetoothDeviceAdapter(this, Resource.Layout.DevicesListItem);
-            pairedDevicesAdapter = new BluetoothDeviceAdapter(this, Resource.Layout.DevicesListItem);
+            prefs = GetSharedPreferences("BluetoothProximitySensor", FileCreationMode.Private);
+
+            if (!btAdapter.IsEnabled) {
+                StartActivityForResult(new Intent(BluetoothAdapter.ActionRequestEnable), 0);
+            }
+            else
+            {
+                populateDevicesLists();
+            }
+            defineReceiver();
 
             var buttonScan = FindViewById<Button>(Resource.Id.button_scan);
             buttonScan.Click += (sender, e) =>
             {
                 DoDiscovery();
             };
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (requestCode == 0 && resultCode == Result.Ok)
+            {
+                populateDevicesLists();
+            }
+        }
+
+        private void populateDevicesLists()
+        {
+            devicesAdapter = new BluetoothDeviceAdapter(this, Resource.Layout.DevicesListItem);
+            pairedDevicesAdapter = new BluetoothDeviceAdapter(this, Resource.Layout.DevicesListItem);
 
             var devicesListView = FindViewById<ListView>(Resource.Id.devices);
             devicesListView.Adapter = devicesAdapter;
             devicesListView.ItemClick += DeviceListClick;
 
-            var pairedDevices = btAdapter.BondedDevices;
+            var pairedDevices = BluetoothAdapter.DefaultAdapter.BondedDevices;
 
             if (pairedDevices.Count > 0)
             {
@@ -67,14 +89,19 @@ namespace BluetoothProximitySensor
             var pairedDevicesListView = FindViewById<ListView>(Resource.Id.paired_devices);
             pairedDevicesListView.Adapter = pairedDevicesAdapter;
             pairedDevicesListView.ItemClick += PairedDeviceListClick;
+        }
 
-
+        private void defineReceiver()
+        {
             receiver = new Receiver(this);
             filter.AddAction(BluetoothDevice.ActionFound);
             filter.AddAction(BluetoothAdapter.ActionDiscoveryFinished);
             filter.AddAction(BluetoothDevice.ActionBondStateChanged);
             RegisterReceiver(receiver, filter);
         }
+
+
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -142,14 +169,14 @@ namespace BluetoothProximitySensor
         {
             btAdapter.CancelDiscovery();
             var alert = new AlertDialog.Builder(this);
-            alert.SetTitle("Do you want to use this device?");
-            alert.SetPositiveButton("Yes", (dialog, args) => {
+            alert.SetTitle(Resource.String.device_choose_confirm);
+            alert.SetPositiveButton(Resource.String.yes, (dialog, args) => {
                 ISharedPreferencesEditor mPrefEditor = prefs.Edit();
                 mPrefEditor.PutString("device_address", pairedDevicesAdapter.devices[((int)(e.Id & 0xFFFFFFFF))].Address);
-                Toast.MakeText(this, "Device set", ToastLength.Short).Show();
+                Toast.MakeText(this, Resource.String.device_set, ToastLength.Short).Show();
                 mPrefEditor.Commit();
             });
-            alert.SetNegativeButton("No", (dialog, args) => { ((AlertDialog)dialog).Dismiss(); });
+            alert.SetNegativeButton(Resource.String.no, (dialog, args) => { ((AlertDialog)dialog).Dismiss(); });
             RunOnUiThread(() => alert.Show());
         }
 

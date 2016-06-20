@@ -98,7 +98,6 @@ namespace BluetoothProximitySensor
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            //RequestWindowFeature(WindowFeatures.IndeterminateProgress);
 
             SetContentView(Resource.Layout.Main);
 

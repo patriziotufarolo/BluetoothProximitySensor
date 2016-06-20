@@ -32,15 +32,17 @@ public final class R {
     }
     public static final class string {
         public static final int ApplicationName=0x7f040000;
-        public static final int button_choose_device=0x7f040011;
+        public static final int button_choose_device=0x7f040012;
         public static final int button_scan=0x7f040001;
         public static final int button_start=0x7f040009;
         public static final int button_stop=0x7f04000a;
+        public static final int choose_device=0x7f04000e;
         public static final int connection_lost=0x7f04000b;
-        public static final int device_choose_confirm=0x7f04000e;
+        public static final int device_choose_confirm=0x7f04000f;
         public static final int device_found=0x7f040004;
+        public static final int device_set=0x7f040013;
         public static final int motion_detected=0x7f04000d;
-        public static final int no=0x7f040010;
+        public static final int no=0x7f040011;
         public static final int none_found=0x7f040005;
         public static final int successfully_paired=0x7f040008;
         public static final int title_devices=0x7f040002;
@@ -48,6 +50,6 @@ public final class R {
         public static final int title_no_paired_devices=0x7f040007;
         public static final int title_paired_devices=0x7f040006;
         public static final int unable_to_connect=0x7f04000c;
-        public static final int yes=0x7f04000f;
+        public static final int yes=0x7f040010;
     }
 }

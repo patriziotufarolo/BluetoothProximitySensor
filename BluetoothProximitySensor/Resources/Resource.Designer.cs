@@ -128,8 +128,8 @@ namespace BluetoothProximitySensor
 			// aapt resource value: 0x7f040000
 			public const int ApplicationName = 2130968576;
 			
-			// aapt resource value: 0x7f040011
-			public const int button_choose_device = 2130968593;
+			// aapt resource value: 0x7f040012
+			public const int button_choose_device = 2130968594;
 			
 			// aapt resource value: 0x7f040001
 			public const int button_scan = 2130968577;
@@ -140,20 +140,26 @@ namespace BluetoothProximitySensor
 			// aapt resource value: 0x7f04000a
 			public const int button_stop = 2130968586;
 			
+			// aapt resource value: 0x7f04000e
+			public const int choose_device = 2130968590;
+			
 			// aapt resource value: 0x7f04000b
 			public const int connection_lost = 2130968587;
 			
-			// aapt resource value: 0x7f04000e
-			public const int device_choose_confirm = 2130968590;
+			// aapt resource value: 0x7f04000f
+			public const int device_choose_confirm = 2130968591;
 			
 			// aapt resource value: 0x7f040004
 			public const int device_found = 2130968580;
 			
+			// aapt resource value: 0x7f040013
+			public const int device_set = 2130968595;
+			
 			// aapt resource value: 0x7f04000d
 			public const int motion_detected = 2130968589;
 			
-			// aapt resource value: 0x7f040010
-			public const int no = 2130968592;
+			// aapt resource value: 0x7f040011
+			public const int no = 2130968593;
 			
 			// aapt resource value: 0x7f040005
 			public const int none_found = 2130968581;
@@ -176,8 +182,8 @@ namespace BluetoothProximitySensor
 			// aapt resource value: 0x7f04000c
 			public const int unable_to_connect = 2130968588;
 			
-			// aapt resource value: 0x7f04000f
-			public const int yes = 2130968591;
+			// aapt resource value: 0x7f040010
+			public const int yes = 2130968592;
 			
 			static String()
 			{

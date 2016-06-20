@@ -15,8 +15,10 @@
     <string name="connection_lost">Connection to device lost</string>
     <string name="unable_to_connect">Unable to connect to device</string>
     <string name="motion_detected">Dlin dlon!</string>
+    <string name="choose_device">Choose device</string>
     <string name="device_choose_confirm">Do you want to use this device?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="button_choose_device">Choose Bluetooth device</string>
+    <string name="device_set">Device set!</string>
 </resources>
