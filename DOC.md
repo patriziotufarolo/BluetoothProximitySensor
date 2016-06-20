@@ -28,25 +28,25 @@ The smartphone reads the serial stream through Bluetooth and notifies the shop k
 - 40pin GPIO cable
 
 ### Raspberry PI
-Raspberry PI is series of single board computer developed with the intent to promote the teaching of computer-science in schools. 
+Raspberry PI is a series of single board computers developed with the intent to promote the teaching of computer-science in schools. 
 Cheap and credit-card sized, Raspberry PI's hardware has become an affordable solution to build embedded systems integrated with electronics.
 Main components include a Broadcom BCM283* SoC, that offer a 700MHz ARM11 processing unit, a VideoCore IV GPU, and RAM.
-Raspberry PI features one to four USB slots, HDMI and composite video, and a 3.5mm phono jack for audio. Lower level input is managed through GPIO pins, with the support of many known protocols like I2C or UART.
+Raspberry PI features one to four USB slots, HDMI and composite video, and a 3.5mm phono jack for audio. Lower level input is managed through GPIO pins, with the support of many known protocols like I2C or UART/TTL.
 It doesn't provide on-board storage: the operating system and all the data are stored on an external SD-card (microSD format in the PI zero).
-It can run Linux-kernel based operating systems, and a lot of Linux distribution are been created to work on its platform, such as Raspbian (that is to say Debian for Raspberry).
+It can run Linux-kernel based operating systems, and a lot of Linux distribution have been created to work on its platform, such as Raspbian (that is to say Debian for Raspberry).
 Some models include a 8P8C ethernet chipset, and the most recent version of the board includes also an on-board Wifi802.11 and Bluetooth Chip.
 The cost of these boards goes from 20 to 35 dollars. The version "Zero" comes with a smaller footprint and limited GPIO capabilities, at the cost of 5$.
 
 ### Passive InfraRed motion detection sensor
 A passive infrared sensor is an electronic sensor that measures infrared light radiating from objects in its field of view.
 It is often used in motion detection sensors, that are commonly used in anti-theft systems or automatically activated lighting systems, to sense the movement of people, animals, objects.
-A Passive infrared doesn't sense movement on its own: it detects changes in the amount of infrared radiation impinging upon it.
-When something or someone passes in front of a background it causes a variation in temperature that is translated in infrared radiation and then converted in the output voltage that triggers the detection.
-Objects of similar temperature but different characteristics in material or surface may also have different infrared emission pattern, and they could trigger the detector as well.
+A passive infrared doesn't sense movement on its own: it detects changes in the amount of infrared radiation impinging upon it.
+When something or someone passes in front of a background it causes a variation in temperature that is translated in infrared radiations and then converted in the output voltage that triggers the detection.
+Objects with similar temperatures but different characteristics in material or surface may have different infrared emission pattern, and they could trigger the detector as well.
 PIR sensors are available with many configurations for a big variety of applications.
 Some sensors implement the so called Fresnel lenses, or mirror segments, that allow to detect objects within a range of 10-12 meter maximum and a field of 300 degrees.
-There are also PIR sensors that allow to detect objects within a field of 360 degrees that are often applied on the ceilings; some other larger PIR sensors can also cover distances in the order of many hundred meters.
-The PIR sensor I've used for the demo offers an high signal of three volts point three when it detects a movement, with an output current of 10mA.
+There are also PIR sensors that allow to detect objects within a field of 360 degrees that are often applied at the ceilings; some other larger PIR sensors can cover distances in the order of many hundred meters.
+The PIR sensor I've used for this demo offers an high signal of three volts point three when it detects a movement, with an output current of 10mA.
 It has a field of 140 degrees and an operating range of about 7 meters.
 #### PINs
 On the chip we have three pins: 
@@ -89,7 +89,7 @@ There are also other commands to set the parity check. Those are:
 - **AT+PO** to turn on odd parity check
 - **AT+PE** to turn on even parity check
 
-HC-06 bluetooth module shares his architecture with the HC-05 module, but differently from the it, HC-06 can only be a slave. That is to say that he cannot inquiry devices or start communications on its own. This could be a limitation, but for most use cases (exspecially mine) it is enough.
+HC-06 bluetooth module shares his architecture with the HC-05 module, but differently from it, HC-06 can only be a slave. That is to say that he cannot inquiry devices or start communications on its own. This could be a limitation, but for most use cases (especially mine) it's enough.
 #### PINs
 On the chip we have four pins: 
 - VCC (Voltage, indicated in the range of 3.6V-6V)
@@ -194,7 +194,7 @@ except KeyboardInterrupt:
 
 #### Libraries used
 
-The libraries I used are:
+Libraries I used are:
 - `RPi.GPIO` to read signals from the GPIO
 - `time` to let the main thread sleep
 - `pyserial` to send data on the serial port
@@ -207,7 +207,7 @@ The libraries I used are:
 
 The Android application is built on top of Xamarin framework.
 Xamarin is a software company founded in San Francisco (California) by the engineers that created Mono, a cross platform implementation of the Common Language Infrastructure and Common Language Specification (.NET framework).
-This framework allow developers to write software in C#, sharing the code between multiple platforms.
+This framework allows developers to write software in C#, sharing the code between multiple platforms.
 In fact, Mono includes Xamarin.iOS and Xamarin.Android that are implementations of Mono for iPhone and Android. After Microsoft's acquisition of Xamarin, the Mono runtime has been relicensed under the MIT license and both set of libraries are made free and open-source.
 Using Mono, I've written a code that is easily portable to other platforms just adapting the interfaces of the Android library to the ones of the iOS library or the Windows Phone library.
 To build the interface I've used the Android XML UI designer embedded in Microsoft Visual Studio Community edition.
