@@ -40,7 +40,7 @@ The cost of these boards goes from 20 to 35 dollars. The version "Zero" comes wi
 ### Passive InfraRed motion detection sensor
 A passive infrared sensor is an electronic sensor that measures infrared light radiating from objects in its field of view.
 It is often used in motion detection sensors, that are commonly used in anti-theft systems or automatically activated lighting systems, to sense the movement of people, animals, objects.
-A Passive infra-red doesn't sense movement on its own: it detects changes in the amount of infrared rardiation impinging upon it.
+A Passive infrared doesn't sense movement on its own: it detects changes in the amount of infrared radiation impinging upon it.
 When something or someone passes in front of a background it causes a variation in temperature that is translated in infrared radiation and then converted in the output voltage that triggers the detection.
 Objects of similar temperature but different characteristics in material or surface may also have different infrared emission pattern, and they could trigger the detector as well.
 PIR sensors are available with many configurations for a big variety of applications.
