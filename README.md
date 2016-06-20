@@ -111,7 +111,7 @@ I have used cables of four different colors:
 This is the Raspberry PI Gpio header schema.
 
 <center>
-<img src="doc_images/raspberry_gpio.png" title="Raspberry GPIO" alt="Raspberry GPIO" width="300"/>
+<img src="doc_images/gpio.png" title="Raspberry GPIO" alt="Raspberry GPIO" width="300"/>
 </center>
 
 For the PIR sensor I have linked the VCC pin to the Raspberry's pin n. 4 (5 volt power channel), the OUT pin (signal) to the Raspberry's pin n.24 (GPIO 8) and the GND pin to Raspberry's pin n.6 (Ground).
