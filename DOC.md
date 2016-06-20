@@ -515,8 +515,6 @@ Inherits from: *BaseThread*
 <img src="doc_images/5_ScreenPC.png" width="800" />
 <img src="doc_images/6_Smartphone5.png" width="800" />
 
-### Workflow
-
 ### Cost evaluation
 
 - Android Smartphone € 50,00
