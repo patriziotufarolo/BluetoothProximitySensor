@@ -52,6 +52,7 @@
     <Compile Include="BaseThread.cs" />
     <Compile Include="BluetoothConnectedThread.cs" />
     <Compile Include="BluetoothConnectThread.cs" />
+    <Compile Include="BluetoothDeviceAdapter.cs" />
     <Compile Include="BluetoothDeviceChooseActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="ProximityService.cs" />

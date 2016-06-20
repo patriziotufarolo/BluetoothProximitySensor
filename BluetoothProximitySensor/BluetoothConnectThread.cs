@@ -39,7 +39,7 @@ namespace BluetoothProximitySensor
             adapter.CancelDiscovery();
             try
             {
-                _bluetoothRfcomm = device.CreateInsecureRfcommSocketToServiceRecord(UUID.FromString(SPP_UUID));
+                _bluetoothRfcomm = device.CreateRfcommSocketToServiceRecord(UUID.FromString(SPP_UUID));
                 _bluetoothRfcomm.Connect();
             }
             catch (Java.IO.IOException)
